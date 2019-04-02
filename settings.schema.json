@@ -38,7 +38,7 @@
         "channels": {
           "type": "array",
           "title": "Track Event Channel Overrides",
-          "description": "Specifiy events that you want to go to a different channel or person (e.g. #general or @j_smith)",
+          "description": "Specifiy events that you want to go to a different channel than the one specificed with the Webhook (e.g. #general or #sales)",
           "items": {
             "type": "object",
             "required": [
@@ -52,7 +52,7 @@
               },
               "mapValue": {
                 "type": "string",
-                "title": "Channel/DM Override"
+                "title": "Channel Override"
               }
             }
           }
