@@ -1,0 +1,85 @@
+{
+  "title": "Slack",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "connection": {
+      "type": "object",
+      "required": [
+        "webhookUrl"
+      ],
+      "properties": {
+        "webhookUrl": {
+          "title": "Slack Webhook URL",
+          "type": "string"
+        }
+      }
+    },
+    "configuration": {
+      "type": "object",
+      "properties": {
+        "whiteListedTraits": {
+          "type": "array",
+          "title": "Whitelisted Identify Traits",
+          "description": "Will not send Identify events unless at least one property is whitelisted",
+          "items": {
+            "type": "string",
+            "title": "Trait"
+          }
+        },
+        "disableTrack": {
+          "type": "boolean",
+          "title": "Only Send Templated Track Events"
+        },
+        "identifyTemplate": {
+          "type": "string",
+          "title": "Identify Event Template"
+        },
+        "channels": {
+          "type": "array",
+          "title": "Track Event Channel Overrides",
+          "description": "Specifiy events that you want to go to a different channel than the one specificed with the Webhook (e.g. #general or #sales)",
+          "items": {
+            "type": "object",
+            "required": [
+              "mapKey",
+              "mapValue"
+            ],
+            "properties": {
+              "mapKey": {
+                "type": "string",
+                "title": "Custom Event Name"
+              },
+              "mapValue": {
+                "type": "string",
+                "title": "Channel Override"
+              }
+            }
+          }
+        },
+        "templates": {
+          "type": "array",
+          "title": "Track Event Templates",
+          "description": "Specifiy new message formats for specific events using handlebars. Default message is {{name}} did {{event}}",
+          "items": {
+            "type": "object",
+            "required": [
+              "mapKey",
+              "mapValue"
+            ],
+            "properties": {
+              "mapKey": {
+                "type": "string",
+                "title": "Custom Event Name"
+              },
+              "mapValue": {
+                "type": "string",
+                "title": "Template"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
