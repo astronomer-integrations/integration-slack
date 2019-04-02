@@ -1,60 +1,80 @@
 {
-  "title" : "Slack",
-  "description" : "",
-  "type" : "object",
-  "properties" : {
-    "connection" : {
-      "type" : "object",
-        "required" : [
-          "webhookUrl"
-        ],
-        "properties" : {
-          "webhookUrl" : {
-            "title" : "Slack Webhook URL",
-            "type" : "string"
-          }
+  "title": "Slack",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "connection": {
+      "type": "object",
+      "required": [
+        "webhookUrl"
+      ],
+      "properties": {
+        "webhookUrl": {
+          "title": "Slack Webhook URL",
+          "type": "string"
         }
+      }
     },
-    "configuration" : {
-      "type" : "object",
-      "properties" : {
-        "whiteListedTraits" : {
-          "type" : "array",
-          "title" : "Whitelisted Identify Traits",
-          "items" : {
-            "type" : "string",
-            "title" : "Trait"
+    "configuration": {
+      "type": "object",
+      "properties": {
+        "whiteListedTraits": {
+          "type": "array",
+          "title": "Whitelisted Identify Traits",
+          "description": "Will not send Identify events unless at least one property is whitelisted",
+          "items": {
+            "type": "string",
+            "title": "Trait"
           }
         },
-        "disableIdentify" : {
-          "type" : "boolean",
-          "title" : "Disable Sending Identify Events"
+        "disableTrack": {
+          "type": "boolean",
+          "title": "Only Send Templated Track Events"
         },
-        "disableTrack" : {
-          "type" : "boolean",
-          "title" : "Only Send Templated Track Events"
+        "identifyTemplate": {
+          "type": "string",
+          "title": "Identify Event Template"
         },
-        "identifyTemplate" : {
-          "type" : "string",
-          "title" : "Identify Event Template"
-        },
-        "templates" : {
-          "type" : "array",
-          "title" : "Track Event Templates",
-          "items" : {
-            "type" : "object",
-            "required" : [
+        "channels": {
+          "type": "array",
+          "title": "Track Event Channel Overrides",
+          "description": "Specifiy events that you want to go to a different channel or person (e.g. #general or @j_smith)",
+          "items": {
+            "type": "object",
+            "required": [
               "mapKey",
               "mapValue"
             ],
-            "properties" : {
-              "mapKey" : {
-                "type" : "string",
-                "title" : "Custom Event Name"
+            "properties": {
+              "mapKey": {
+                "type": "string",
+                "title": "Custom Event Name"
               },
-              "mapValue" : {
-                "type" : "string",
-                "title" : "Template String"
+              "mapValue": {
+                "type": "string",
+                "title": "Channel/DM Override"
+              }
+            }
+          }
+        },
+        "templates": {
+          "type": "array",
+          "title": "Track Event Templates",
+          "description": "Specifiy new message formats for specific events using handlebars. Default message is {{name}} did {{event}}",
+          "items": {
+            "type": "object",
+            "required": [
+              "mapKey",
+              "mapValue"
+            ],
+            "properties": {
+              "mapKey": {
+                "type": "string",
+                "title": "Custom Event Name"
+              },
+              "mapValue": {
+                "type": "string",
+                "title": "Template"
               }
             }
           }
