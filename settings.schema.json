@@ -1,0 +1,65 @@
+{
+  "title" : "Slack",
+  "description" : "",
+  "type" : "object",
+  "properties" : {
+    "connection" : {
+      "type" : "object",
+        "required" : [
+          "webhookUrl"
+        ],
+        "properties" : {
+          "webhookUrl" : {
+            "title" : "Slack Webhook URL",
+            "type" : "string"
+          }
+        }
+    },
+    "configuration" : {
+      "type" : "object",
+      "properties" : {
+        "whiteListedTraits" : {
+          "type" : "array",
+          "title" : "Whitelisted Identify Traits",
+          "items" : {
+            "type" : "string",
+            "title" : "Trait"
+          }
+        },
+        "disableIdentify" : {
+          "type" : "boolean",
+          "title" : "Disable Sending Identify Events"
+        },
+        "disableTrack" : {
+          "type" : "boolean",
+          "title" : "Only Send Templated Track Events"
+        },
+        "identifyTemplate" : {
+          "type" : "string",
+          "title" : "Identify Event Template"
+        },
+        "templates" : {
+          "type" : "array",
+          "title" : "Track Event Templates",
+          "items" : {
+            "type" : "object",
+            "required" : [
+              "mapKey",
+              "mapValue"
+            ],
+            "properties" : {
+              "mapKey" : {
+                "type" : "string",
+                "title" : "Custom Event Name"
+              },
+              "mapValue" : {
+                "type" : "string",
+                "title" : "Template String"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

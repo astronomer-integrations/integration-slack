@@ -1,5 +1,7 @@
 # integration-slack
 
-[![CircleCI](https://circleci.com/gh/segment-integrations/integration-slack.svg?style=shield&circle-token=f55bdc0c7f819366a136571f71120891489cae0f)](https://circleci.com/gh/segment-integrations/integration-slack)
-  
-Slack server-side integration for [Segment](https://segment.com).
+Slack server-side integration originally developed by [Segment](https://segment.com) and maintained by [MetaRouter](https://metarouter.io)
+
+## Settings & Configuration
+
+**Note**: Disabling Identify events will not send any Identify events while disabling Track events will only send track events with templates.
